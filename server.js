@@ -5,7 +5,7 @@ const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const path = require('path');
 const exphbs = require('express-handlebars');
-const helpers = requie('./utils/helpers');
+const helpers = require('./utils/helpers');
 
 // Set port & initiate express
 const PORT = process.env.PORT || 3001;
@@ -29,7 +29,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Set middlewhere
-app.use(express.urlencoded({ endeded: false }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
