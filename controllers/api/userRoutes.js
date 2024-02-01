@@ -2,9 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 router.get('/', async (req, res) => {
-  console.log('Did we make it to the user routes?');
   try {
-    console.log('Did we make it to the users get route?');
     res.status(200).json(res);
   } catch (err) {
     res.status(400).json(err);
@@ -12,8 +10,6 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log('we made it to the post user route');
-  console.log(req.body);
   try {
     const newUser = await User.create(req.body);
     req.session.save(() => {
@@ -27,15 +23,12 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  console.log('in the login route');
-  console.log(req.body)
   try {
     const userData = await User.findOne({
       where: { email: req.body.email },
     });
 
     if (!userData) {
-      console.log('no user data');
       return res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -43,15 +36,11 @@ router.post('/login', async (req, res) => {
 
     const validPassword = await userData.checkPassword(req.body.password);
     if (!validPassword) {
-      console.log('password didnt match');
       return res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
     }
-    console.log('everything confirmed');
     req.session.save(() => {
-      console.log('inside save');
-      console.log(userData.id);
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
       res.json({ user: userData, message: 'User logged in' });
@@ -64,7 +53,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', async (req, res) => {
-  console.log('made it to logour route');
   try {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
