@@ -1,11 +1,19 @@
+
+  {{#unless loggedIn}}
+  <a href="/login">Login</a>
+  <a> or </a>
+  <a href="signup">Signup</a>
+  <a> to see more details and save your roles</a>
+  {{/unless}}
+
 <div
   class='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:px-4 xl:mt-20 xl:grid-cols-4'
 >
   {{#each data.results as |job|}}
-    <div class='h-48 overflow-hidden rounded-md bg-slate-200 '>
+    <div class='h-48 overflow-hidden rounded-md bg-slate-200'>
       <div class='px-5 py-6'>
         <div class='flex items-center justify-between'>
-          <div class="w-10 h-10 rounded-full bg-green-400 flex-shrink-0"></div>
+          <div class='h-10 w-10 flex-shrink-0 rounded-full bg-green-400'></div>
           <div class='ml-3 mr-auto min-w-0'>
             <p
               class='truncate text-base font-semibold text-black'

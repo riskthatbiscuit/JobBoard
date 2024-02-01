@@ -4,22 +4,22 @@
     <div class='mx-auto px-4 sm:px-6 lg:px-8'>
       <nav class='relative flex h-16 items-center justify-between lg:h-20'>
         <div class='hidden lg:flex lg:items-center lg:space-x-10'>
-          <a href='#' title='' class='text-base font-medium text-black'>
-            Features
+          <a href='/jobs' title='' class='text-base font-medium text-black'>
+            All Jobs
           </a>
+          {{#if loggedIn}}
+            <a href='#' title='' class='text-base font-medium text-black'>
+              Saved Notes
+            </a>
 
-          <a href='#' title='' class='text-base font-medium text-black'>
-            Solutions
-          </a>
-
-          <a href='#' title='' class='text-base font-medium text-black'>
-            Resources
-          </a>
+            <a href='#' title='' class='text-base font-medium text-black'>
+              Resources
+            </a>
+          {{/if}}
         </div>
-
         <div class='lg:absolute lg:inset-y-5 lg:left-1/2 lg:-translate-x-1/2'>
           <div class='flex-shrink-0'>
-            <a href='#' title='' class='flex'>
+            <a href='/' title='' class='flex text-lg'>
               Jobs Board
             </a>
           </div>
@@ -47,15 +47,19 @@
 
         <div class='hidden lg:flex lg:items-center lg:space-x-10'>
           {{#if loggedIn}}
-            <a href='#' title='' class='text-base font-medium text-black'>
+            <button
+              id='logout'
+              title=''
+              class='text-base font-medium text-black'
+            >
               Log Out
-            </a>
+            </button>
           {{else}}
-            <a href='#' title='' class='text-base font-medium text-black'>
+            <a href='/signup' title='' class='text-base font-medium text-black'>
               Sign up
             </a>
 
-            <a href='#' title='' class='text-base font-medium text-black'>
+            <a href='/login' title='' class='text-base font-medium text-black'>
               Sign in
             </a>
           {{/if}}

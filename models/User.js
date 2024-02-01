@@ -35,10 +35,6 @@ User.init(
         len: [8],
       },
     },
-    country: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   },
   {
     hooks: {
