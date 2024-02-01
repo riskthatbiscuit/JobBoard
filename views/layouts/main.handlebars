@@ -1,0 +1,23 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>JobsBoard</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+  </head>
+
+  <body>
+    <header>
+      {{> header}}
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+    <footer>
+      {{> footer}}
+    </footer>
+    {{#if loggedIn}}
+      {{! <script src='/js/logout.js'></script> }}
+    {{/if}}
+  </body>
+</html>
