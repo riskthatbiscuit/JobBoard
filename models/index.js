@@ -27,4 +27,9 @@ User.belongsToMany(Jobs, {
   as: 'user_saved_job',
 });
 
+Jobs.hasMany(JobsUsers);
+JobsUsers.belongsTo(Jobs);
+User.hasMany(JobsUsers);
+JobsUsers.belongsTo(Jobs);
+
 module.exports = { Jobs, User, JobsUsers, Notes };

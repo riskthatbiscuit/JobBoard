@@ -28,14 +28,6 @@ router.get('/signup', async (req, res) => {
   }
 });
 
-router.get('/profile', async (req, res) => {
-  try {
-    res.render('profile', { loggedIn: req.session.loggedIn });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 router.get('/jobs', async (req, res) => {
   try {
     const response = await axios.get('https://findwork.dev/api/jobs/', {
@@ -49,6 +41,25 @@ router.get('/jobs', async (req, res) => {
       data,
       loggedIn: req.session.loggedIn,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/jobs/:id', async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://findwork.dev/api/jobs/${req.params.id}`,
+      {
+        headers: {
+          Authorization: `Token ${apiKey}`,
+        },
+      }
+    );
+    const data = await response.data;
+    // console.log(data);
+    res.status(200).json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

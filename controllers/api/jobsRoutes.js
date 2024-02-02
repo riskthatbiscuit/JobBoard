@@ -11,33 +11,46 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log('made it into post route')
+  console.log('made it into post route');
   try {
-    const job_title = req.body.job_title;
+    // const job_title = req.body.job_title;
     const saved_job_id = req.body.job_id;
-    const company_name = req.body.company_name;
+    // const company_name = req.body.company_name;
     const user_id = req.session.user_id;
-
-    const checkJob = await Jobs.findOne({
+    // console.log(`res ${req.body}`);
+    console.log([saved_job_id, user_id]);
+    let checkJob = await Jobs.findOne({
       where: {
         saved_job_id: saved_job_id,
       },
     });
 
-    if (checkJob === null) {
-      const newJob = await Jobs.create({
-        job_title,
-        company_name,
+    console.log(`first check ${checkJob}`);
+    if (!checkJob) {
+      checkJob = await Jobs.create({
+        // job_title,
+        // company_name,
         saved_job_id,
       });
-
-      const newJobLink = await JobsUsers.create({
-        user_id,
-        saved_job_id,
-      });
-      console.log('New job added');
-      res.status(200).json(newJobLink);
+      console.log('did we create a job??');
     }
+
+    let checkLink = await JobsUsers.findOne({
+      where: {
+        user_id: user_id,
+        job_id: checkJob.id,
+      },
+    });
+
+    console.log(`second check ${checkLink}`);
+    if (!checkLink) {
+      newJobLink = await JobsUsers.create({
+        user_id,
+        job_id: checkJob.id,
+      });
+    }
+    console.log('Job linked');
+    res.status(200).json(newJobLink);
   } catch (err) {
     res.status(400).json(err);
   }
