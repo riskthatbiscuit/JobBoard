@@ -44,8 +44,7 @@ Jobs.init(
           );
 
           const apiData = apiResponse.data;
-          console.log('Job ID');
-          console.log(job_id);
+
           job.job_title = apiData.role;
           job.remote = apiData.remote;
           job.company_num_employees = apiData.company_num_employees;
@@ -57,9 +56,6 @@ Jobs.init(
           job.date_posted = apiData.date_posted;
           job.keywords = apiData.keywords;
           job.source = apiData.source;
-
-          console.log('we passed the object phase');
-          console.log(job);
         } catch (err) {
           console.error('API call failed;', err);
         }

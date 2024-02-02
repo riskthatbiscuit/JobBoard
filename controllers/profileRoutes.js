@@ -5,9 +5,7 @@ const { Jobs, JobsUsers } = require('../models');
 // Get jobs details for all jobs saved by user
 router.get('/', withAuth, async (req, res) => {
   try {
-    console.log('in get route');
     const userId = req.session.user_id;
-    console.log(userId);
     const jobsData = await JobsUsers.findAll({
       where: {
         user_id: userId,
@@ -20,7 +18,6 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const jobs = jobsData.map((job) => job.job.get({ plain: true }));
-    console.log(jobs);
 
     res.render('profile', { jobs, loggedIn: req.session.loggedIn });
   } catch (err) {
