@@ -12,9 +12,10 @@
             data-job-id='{{job.saved_job_id}}'
           >Star</button>
           <div class='ml-3 mr-auto min-w-0'>
-            <p
+            <a
+              href='{{job.url}}'
               class='truncate text-base font-semibold text-black'
-            >{{job.job_title}}</p>
+            >{{job.job_title}}</a>
             <p class='truncate text-sm text-gray-600'>{{job.company_name}}</p>
           </div>
         </div>
