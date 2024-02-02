@@ -18,7 +18,7 @@ router.get('/', withAuth, async (req, res) => {
     });
 
     const jobs = jobsData.map((job) => job.job.get({ plain: true }));
-
+    console.log(jobs);
     res.render('profile', { jobs, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log('error was had');

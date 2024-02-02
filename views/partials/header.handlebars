@@ -1,151 +1,139 @@
-<header>
-  <!-- lg+ -->
-  <div class='border-b border-gray-200 bg-gray-100'>
-    <div class='mx-auto px-4 sm:px-6 lg:px-8'>
-      <nav class='relative flex h-16 items-center justify-between lg:h-20'>
-        <div class='hidden lg:flex lg:items-center lg:space-x-10'>
-          <a href='/jobs' title='' class='text-base font-medium text-black'>
-            All Jobs
+<!-- lg+ -->
+<div class='border-b border-gray-200 bg-gray-100'>
+  <div class='mx-auto px-4 sm:px-6 lg:px-8'>
+    <nav class='relative flex h-16 items-center justify-between lg:h-20'>
+      <div class='hidden lg:flex lg:items-center lg:space-x-10'>
+        <a href='/jobs' title='' class='text-base font-medium text-black'>
+          All Jobs
+        </a>
+        {{#if loggedIn}}
+          <a href='/profile' title='' class='text-base font-medium text-black'>
+            Profile
           </a>
-          {{#if loggedIn}}
-            <a
-              href='/profile'
-              title=''
-              class='text-base font-medium text-black'
-            >
-              Profile
-            </a>
-            {{! <a href='#' title='' class='text-base font-medium text-black'>
+          {{! <a href='#' title='' class='text-base font-medium text-black'>
               Resources
             </a> }}
-          {{/if}}
+        {{/if}}
+      </div>
+      <div class='lg:absolute lg:inset-y-5 lg:left-1/2 lg:-translate-x-1/2'>
+        <div class='flex-shrink-0'>
+          <a href='/' title='' class='flex text-lg'>
+            Jobs Board
+          </a>
         </div>
-        <div class='lg:absolute lg:inset-y-5 lg:left-1/2 lg:-translate-x-1/2'>
-          <div class='flex-shrink-0'>
-            <a href='/' title='' class='flex text-lg'>
-              Jobs Board
-            </a>
-          </div>
-        </div>
-
-        <button
-          id='menu_button'
-          type='button'
-          class='ml-5 inline-flex rounded-md p-2 text-black transition-all duration-200 hover:bg-gray-100 focus:bg-gray-100 lg:hidden'
-        >
-          <svg
-            class='h-6 w-6'
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M4 6h16M4 12h16m-7 6h7'
-            />
-          </svg>
-        </button>
-
-        <div class='hidden lg:flex lg:items-center lg:space-x-10'>
-          {{#if loggedIn}}
-            <button
-              id='logout'
-              title=''
-              class='text-base font-medium text-black'
-            >
-              Log Out
-            </button>
-          {{else}}
-            <a href='/signup' title='' class='text-base font-medium text-black'>
-              Sign up
-            </a>
-
-            <a href='/login' title='' class='text-base font-medium text-black'>
-              Sign in
-            </a>
-          {{/if}}
-        </div>
-      </nav>
-    </div>
-  </div>
-
-  <!-- xs to lg -->
-  <nav id='small_menu' class='bg-white py-4 lg:hidden'>
-    <div class='mx-auto px-4 sm:px-6 lg:px-8'>
-      <div class='flex items-center justify-between'>
-        <p
-          class='text-sm font-semibold uppercase tracking-widest text-gray-400'
-        >
-          Menu
-        </p>
       </div>
 
-      <div class='mt-6'>
-        <div class='flex flex-col space-y-2'>
+      <button
+        id='menu_button'
+        type='button'
+        class='ml-5 inline-flex rounded-md p-2 text-black transition-all duration-200 hover:bg-gray-100 focus:bg-gray-100 lg:hidden'
+      >
+        <svg
+          class='h-6 w-6'
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke='currentColor'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M4 6h16M4 12h16m-7 6h7'
+          />
+        </svg>
+      </button>
+
+      <div class='hidden lg:flex lg:items-center lg:space-x-10'>
+        {{#if loggedIn}}
+          <button id='logout' title='' class='text-base font-medium text-black'>
+            Log Out
+          </button>
+        {{else}}
+          <a href='/signup' title='' class='text-base font-medium text-black'>
+            Sign up
+          </a>
+
+          <a href='/login' title='' class='text-base font-medium text-black'>
+            Sign in
+          </a>
+        {{/if}}
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- xs to lg -->
+<nav id='small_menu' class='bg-white py-4 lg:hidden'>
+  <div class='mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='flex items-center justify-between'>
+      <p class='text-sm font-semibold uppercase tracking-widest text-gray-400'>
+        Menu
+      </p>
+    </div>
+
+    <div class='mt-6'>
+      <div class='flex flex-col space-y-2'>
+        <a
+          href='/jobs'
+          title=''
+          class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
+        >
+          All Jobs
+        </a>
+        {{#if loggedIn}}
+          {{! <a href='#' title='' class='text-base font-medium text-black'>
+              Resources
+            </a> }}
           <a
-            href='/jobs'
+            href='/profile'
             title=''
             class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
           >
-            All Jobs
+            Profile
           </a>
-          {{#if loggedIn}}
-            {{! <a href='#' title='' class='text-base font-medium text-black'>
-              Resources
-            </a> }}
-            <a
-              href='/profile'
-              title=''
-              class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
-            >
-              Profile
-            </a>
 
-            {{! <a
+          {{! <a
             href='#'
             title=''
             class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
           >
             Resources
           </a> }}
-          {{/if}}
-        </div>
+        {{/if}}
+      </div>
 
-        <hr class='my-4 border-gray-200' />
+      <hr class='my-4 border-gray-200' />
 
-        <div class='flex flex-col space-y-2'>
-          {{#if loggedIn}}
-            <a
-              id='/logout'
-              title=''
-              class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
-            >
-              Log Out
-            </a>
-          {{else}}
-            <a
-              href='/signup'
-              title=''
-              class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
-            >
-              Sign up
-            </a>
+      <div class='flex flex-col space-y-2'>
+        {{#if loggedIn}}
+          <a
+            id='/logout'
+            title=''
+            class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
+          >
+            Log Out
+          </a>
+        {{else}}
+          <a
+            href='/signup'
+            title=''
+            class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
+          >
+            Sign up
+          </a>
 
-            <a
-              href='/login'
-              title=''
-              class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
-            >
-              Sign in
-            </a>
-          {{/if}}
-        </div>
+          <a
+            href='/login'
+            title=''
+            class='py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600'
+          >
+            Sign in
+          </a>
+        {{/if}}
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <script src='../js/header.js'></script>

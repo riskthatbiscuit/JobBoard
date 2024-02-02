@@ -47,6 +47,7 @@ Jobs.init(
 
           job.job_title = apiData.role;
           job.remote = apiData.remote;
+          job.company_name = apiData.company_name;
           job.company_num_employees = apiData.company_num_employees;
           job.employment_type = apiData.employment_type;
           job.location = apiData.location;

@@ -1,33 +1,77 @@
-<h1> SAVED JOBS</h1>
-<div
-  class='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:px-4 xl:mt-20 xl:grid-cols-4'
->
+<div class='fixed col-span-1 h-full w-80 bg-blue-200'>
   {{#each jobs as |job|}}
-    <div class='h-48 overflow-hidden rounded-md bg-slate-200'>
-      <div class='px-5 py-6'>
-        <div class='flex items-center justify-between'>
-          <button
-            type='click'
-            class='job_card_button h-10 w-10 flex-shrink-0 rounded-full bg-green-400'
-            data-job-id='{{job.saved_job_id}}'
-          >Star</button>
-          <div class='ml-3 mr-auto min-w-0'>
-            <a
-              href='{{job.url}}'
-              class='truncate text-base font-semibold text-black'
-            >{{job.job_title}}</a>
-            <p class='truncate text-sm text-gray-600'>{{job.company_name}}</p>
+    <a
+      href='#{{job.id}}'
+      class='border-black-200 m-4 flex h-24 items-center overflow-hidden rounded-md bg-slate-200 p-4'
+    >
+      <div class='flex-auto'>
+        <p class='font-semibold text-black'>{{job_title}}</p>
+        <p class=''>{{job.company_name}}</p>
+      </div>
+      {{!-- <button
+        type='click'
+        class='job_card_button h-10 w-10 flex-shrink-0 rounded-full bg-green-400'
+        data-job-id='{{job.saved_job_id}}'
+      >Del</button> --}}
+    </a>
+  {{/each}}
+</div>
+<div class='grid grid-cols-4'>ß
+  <div class='col-span-3 w-full flex-col p-6'>
+    {{#each jobs as |job|}}
+      <div
+        id='{{job.id}}'
+        class='mb-3.5 overflow-hidden rounded-md bg-slate-200'
+      >
+        <div class='px-5 py-6'>
+          <div class='flex h-8 items-center justify-between'>
+              {{#if job.logo}}
+                <img src='{{job.logo}}' alt=''></img>
+              {{/if}}
+            <div class='ml-3 mr-auto min-w-0'>
+              <a
+                href='{{job.url}}'
+                class='truncate text-base font-semibold text-black'
+              >{{job.job_title}}</a>
+              <p class='text-sm'>{{job.company_name}}</p>
+            </div>
+          </div>
+          <div class='mt-5 bg-green-200'>
+            <div>
+              {{#if job.remote}}
+                <p>Remote: {{job.remote}}</p>
+                <br />
+              {{/if}}
+              {{#if job.company_num_employees}}
+                <p>Company employees: {{job.company_num_employees}}</p>
+                <br />
+              {{/if}}
+              {{#if job.employment_type}}
+                <p>Employment type: {{job.employment_type}}</p>
+                <br />
+              {{/if}}
+              {{#if job.location}}
+                <p>Location: {{job.location}}</p>
+                <br />
+              {{/if}}
+              <p>Date posted: {{format_date date_posted}}</p>
+            </div>
+            <br />
+            <p class=' text-base text-gray-800'>
+              {{{job.text}}}
+            </p>
+            <br />
+            <p>Keywords: {{job.keywords}}</p>
+            <button
+              type='click'
+              class='job_card_button h-10 flex-shrink-0 rounded px-5'
+              data-job-id='{{job.saved_job_id}}'
+            >Delete</button>
           </div>
         </div>
-        <blockquote class='mt-5'>
-          <p class='truncate text-base text-gray-800'>
-            {{{job.text}}}
-            <span class='block text-sky-500'>#another</span>
-          </p>
-        </blockquote>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>
 
 <script src='./js/savejob.js'></script>
