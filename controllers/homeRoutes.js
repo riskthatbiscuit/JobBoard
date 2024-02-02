@@ -44,7 +44,7 @@ router.get('/jobs', async (req, res) => {
       },
     });
     const data = await response.data;
-
+    // console.log(data);
     res.render('alljobs', {
       data,
       loggedIn: req.session.loggedIn,

@@ -1,10 +1,9 @@
-
-  {{#unless loggedIn}}
-  <a href="/login">Login</a>
+{{#unless loggedIn}}
+  <a href='/login'>Login</a>
   <a> or </a>
-  <a href="signup">Signup</a>
+  <a href='signup'>Signup</a>
   <a> to see more details and save your roles</a>
-  {{/unless}}
+{{/unless}}
 
 <div
   class='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:px-4 xl:mt-20 xl:grid-cols-4'
@@ -13,7 +12,13 @@
     <div class='h-48 overflow-hidden rounded-md bg-slate-200'>
       <div class='px-5 py-6'>
         <div class='flex items-center justify-between'>
-          <div class='h-10 w-10 flex-shrink-0 rounded-full bg-green-400'></div>
+          <button
+            type='click'
+            class='job_card_button h-10 w-10 flex-shrink-0 rounded-full bg-green-400'
+            data-job-title='{{job.role}}'
+            data-job-id='{{job.id}}'
+            data-company-name='{{job.company_name}}'
+          >Star</button>
           <div class='ml-3 mr-auto min-w-0'>
             <p
               class='truncate text-base font-semibold text-black'
@@ -31,3 +36,5 @@
     </div>
   {{/each}}
 </div>
+
+<script src='./js/savejob.js'></script>

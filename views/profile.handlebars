@@ -1,1 +1,26 @@
-<p>PROFILE</p>
+<h1> SAVED JOBS</h1>
+<div
+  class='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:px-4 xl:mt-20 xl:grid-cols-4'
+>
+  {{#each data.results as |job|}}
+    <div class='h-48 overflow-hidden rounded-md bg-slate-200'>
+      <div class='px-5 py-6'>
+        <div class='flex items-center justify-between'>
+          <div class='h-10 w-10 flex-shrink-0 rounded-full bg-green-400'></div>
+          <div class='ml-3 mr-auto min-w-0'>
+            <p
+              class='truncate text-base font-semibold text-black'
+            >{{job.role}}</p>
+            <p class='truncate text-sm text-gray-600'>{{job.company_name}}</p>
+          </div>
+        </div>
+        <blockquote class='mt-5'>
+          <p class='truncate text-base text-gray-800'>
+            {{{job.text}}}
+            <span class='block text-sky-500'>#another</span>
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  {{/each}}
+</div>
