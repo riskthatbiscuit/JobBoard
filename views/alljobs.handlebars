@@ -5,6 +5,19 @@
   <a> to see more details and save your roles</a>
 {{/unless}}
 
+<form
+  id='search_menu'
+  class='border-black-100 m-4 flex w-80 rounded bg-blue-200 p-4'
+>
+  <p>Search by Location</p>
+  <textarea id='location_input' placeholder='London'></textarea>
+  <button
+    type='submit'
+    id='location_search'
+    class='h-10 w-10 flex-shrink-0 rounded-full bg-green-400'
+  >Search</button>
+</form>
+
 <div
   class='mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:px-4 xl:mt-20 xl:grid-cols-4'
 >
@@ -37,3 +50,4 @@
 
 <script src='./js/savejob.js'></script>
 <script src='./js/savedjobs.js'></script>
+<script src='./js/search.js'></script>

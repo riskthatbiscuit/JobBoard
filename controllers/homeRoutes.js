@@ -66,4 +66,27 @@ router.get('/jobs/:id', async (req, res) => {
   }
 });
 
+router.get('/jobs/:location', async (req, res) => {
+  try {
+    console.log(req.params.location);
+    const response = await axios.get(
+      `https://findwork.dev/api/jobs/?location=${req.params.location}`,
+      {
+        headers: {
+          Authorization: `Token ${apiKey}`,
+        },
+      }
+    );
+    const data = await response.data;
+    // console.log(data);
+    res.render('alljobs', {
+      data,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
