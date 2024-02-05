@@ -66,9 +66,10 @@ router.get('/jobs/:id', async (req, res) => {
   }
 });
 
-router.get('/jobs/:location', async (req, res) => {
+router.get('/jobs/location/:location', async (req, res) => {
   try {
     console.log(req.params.location);
+    console.log('I AM HERE!');
     const response = await axios.get(
       `https://findwork.dev/api/jobs/?location=${req.params.location}`,
       {
@@ -77,14 +78,15 @@ router.get('/jobs/:location', async (req, res) => {
         },
       }
     );
-    const data = await response.data;
+    const data = response.data.results;
     // console.log(data);
     res.render('alljobs', {
       data,
       loggedIn: req.session.loggedIn,
     });
+    console.log('did it happen?');
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.status(500).json(err);
   }
 });

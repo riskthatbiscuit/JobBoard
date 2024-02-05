@@ -8,19 +8,20 @@ const searchLocation = async (event) => {
   }
 
   try {
-    const response = await fetch(`/jobs/${locationValue}`, {
+    const response = await fetch(`/jobs/location/${locationValue}`, {
       method: 'GET',
     });
+    console.log(response);
     if (response.ok) {
-      const jobs = await response.json();
-      // console.log(jobs);
+      const jobs = await response;
+      console.log(jobs);
     } else {
       console.error('Failed to fetch jobs:', response.statusText);
     }
   } catch (err) {
     console.error('Error:', err);
   }
-  location.reload();
+  // location.reload();
 };
 
 const searchLoc = document.getElementById('search_menu');
